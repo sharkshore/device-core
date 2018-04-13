@@ -40,7 +40,7 @@
 
 
         <!--项目启动入口-->
-        <start.class>com.shark.mybatisboot.web.BootApplication</start.class>
+        <start.class>com.xinyan.device.core.web.BootApplication</start.class>
 
 
         <!--maven上传私服包配置-->
