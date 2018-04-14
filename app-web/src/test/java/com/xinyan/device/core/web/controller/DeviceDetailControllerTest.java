@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @TestPropertySource(locations = "classpath:application-test.properties")
 @Slf4j
-public class DemoControllerTest {
+public class DeviceDetailControllerTest {
 
     @Autowired
     private MockMvc mvc;

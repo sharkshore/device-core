@@ -1,7 +1,7 @@
 package com.xinyan.device.core.web;
 
 
-import com.xinyan.device.core.web.controller.DemoController;
+import com.xinyan.device.core.web.controller.DeviceDetailController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(DemoController.class)
+@WebMvcTest(DeviceDetailController.class)
 //@AutoConfigureRestDocs(outputDir = "target/snippets")
 public class WebLayerTest {
 

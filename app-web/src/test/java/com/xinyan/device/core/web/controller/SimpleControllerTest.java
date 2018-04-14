@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by tuze on 2017/12/7.
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(SimpleController.class)
+@WebMvcTest(DeviceDetailController.class)
 public class SimpleControllerTest {
 
     @Autowired
@@ -32,7 +32,7 @@ public class SimpleControllerTest {
     @Test
     public void hello() throws Exception {
 
-        given(simpleService.getName()) .willReturn("hello,shark");
+        given(simpleService.getName()).willReturn("hello,shark");
         mockMvc.perform(get("/simple").accept(MediaType.TEXT_PLAIN))
                 .andDo(print())
                 .andExpect(status().isOk()).andExpect(content().string("hello,shark"));

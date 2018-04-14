@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinyan.device.core.dal.mapper.DeviceDetailMapper">
+
+    <resultMap id="BaseResultMap" type="com.xinyan.device.core.dal.model.DeviceDetailDTO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+        <result column="req_time" property="reqTime" jdbcType="TIMESTAMP" />
+        <result column="xyid" property="xyid" jdbcType="VARCHAR" />
+        <result column="token" property="token" jdbcType="VARCHAR" />
+        <result column="device_score" property="deviceScore" jdbcType="INTEGER" />
+        <result column="device_type" property="deviceType" jdbcType="VARCHAR" />
+        <result column="os" property="os" jdbcType="VARCHAR" />
+        <result column="os_version" property="osVersion" jdbcType="VARCHAR" />
+        <result column="access_app" property="accessApp" jdbcType="VARCHAR" />
+        <result column="is_vm" property="isVm" jdbcType="BOOLEAN" />
+        <result column="is_emulator" property="isEmulator" jdbcType="BOOLEAN" />
+        <result column="is_proxy" property="isProxy" jdbcType="BOOLEAN" />
+        <result column="is_vpn" property="isVpn" jdbcType="BOOLEAN" />
+        <result column="is_root" property="isRoot" jdbcType="BOOLEAN" />
+        <result column="is_jailbreak" property="isJailbreak" jdbcType="BOOLEAN" />
+        <result column="is_agent" property="isAgent" jdbcType="BOOLEAN" />
+        <result column="country" property="country" jdbcType="VARCHAR" />
+        <result column="region" property="region" jdbcType="VARCHAR" />
+        <result column="city" property="region" jdbcType="VARCHAR" />
+        <result column="ip" property="ip" jdbcType="VARCHAR" />
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="columns">
+        id,merchant_no,req_time,xyid,token,device_score,device_type,os,os_version,access_app,is_vm,is_emulator,is_proxy,is_vpn,is_root,is_jailbreak,is_agent,country,region,city,ip,created_at
+    </sql>
+
+    <!-- 查询所有商户 -->
+    <select id="selectBySelective" resultMap="BaseResultMap" parameterType="com.xinyan.device.core.dal.model.DeviceDetailQUERY">
+        SELECT
+        <include refid="columns"/>
+
+        <where>
+            <if test="xyid !=null and xyid !=''">
+                AND xyid=${xyid,jdbcType=VARCHAR}
+            </if>
+            <if test="token !=null and token !=''">
+                AND token=${token,jdbcType=VARCHAR}
+            </if>
+            <if test="ip !=null and ip !=''">
+                AND ip=${ip,jdbcType=VARCHAR}
+            </if>
+            <if test="beginReqTime !=null  and endReqTime !=null  ">
+                <![CDATA[
+                    AND req_time>=  #{beginCreatedAt,jdbcType=TIMESTAMP}
+                     AND req_time<= #{endCreatedAt,jdbcType=TIMESTAMP}
+              ]]>
+            </if>
+        </where>
+
+
+    </select>
+
+</mapper>
